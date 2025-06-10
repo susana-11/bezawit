@@ -1,24 +1,26 @@
 import React, { useState } from 'react';
 import './App.css';
-import { FaFacebookF, FaTelegramPlane } from "react-icons/fa";
-import { SiTiktok } from "react-icons/si";
+import { FaFacebookF, FaTiktok, FaTelegramPlane } from 'react-icons/fa';
+
+
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <div className="App">
+      {/* Navbar */}
       <nav className="navbar">
         <div className="logo">Portfolio</div>
         <div className="menu-icon" onClick={() => setMenuOpen(!menuOpen)}>
           &#9776;
         </div>
-        <ul className={`menu ${menuOpen ? 'active' : ''}`}>
-          <li><a href="#home" onClick={() => setMenuOpen(false)}>Home</a></li>
-          <li><a href="#about" onClick={() => setMenuOpen(false)}>About</a></li>
-          <li><a href="#skills" onClick={() => setMenuOpen(false)}>Skills</a></li>
-          <li><a href="#services" onClick={() => setMenuOpen(false)}>Services</a></li>
-          <li><a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a></li>
+        <ul className={`menu ${menuOpen ? 'open' : ''}`}>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
 
@@ -32,7 +34,8 @@ function App() {
           </div>
           <div className="home-right">
             <div className="glow-circle">
-              <img src="/profile.jpg" alt="Bezawit" className="profile-image" />
+              <img src="profile.jpg" alt="Bezawit" className="profile-image" />
+
             </div>
           </div>
         </div>
@@ -44,10 +47,11 @@ function App() {
           <div className="about-left">
             <h2>About Me</h2>
             <p>
-              Hi, I'm Bezawit Andargie, a passionate Frontend Developer based in Debremarkos. I specialize in creating beautiful, responsive, and interactive websites using modern web technologies like HTML, CSS, JavaScript, and React.
-            </p>
-            <p>
-              With a keen eye for design and user experience, I aim to bring creative ideas to life and build web interfaces that are not only functional but also visually appealing. I'm constantly learning and improving my skills to stay up-to-date with the latest trends in web development.
+              Hi, I'm Bezawit Andargie, a passionate Frontend Developer based in Debre Markos.
+              I specialize in creating beautiful, responsive, and interactive websites using modern web technologies like HTML, CSS, JavaScript, and React.
+              <br /><br />
+              With a keen eye for design and user experience, I aim to bring creative ideas to life and build web interfaces that are not only functional but also visually appealing.
+              I'm constantly learning and improving my skills to stay up-to-date with the latest trends in web development.
             </p>
           </div>
         </div>
@@ -55,48 +59,25 @@ function App() {
 
       {/* Skills Section */}
       <section id="skills" className="skills-section">
-        <h2 className="skills-title">My skills</h2>
-        <p className="skills-subtitle">what i know</p>
+        <h2 className="skills-title">My Skills</h2>
+        <p className="skills-subtitle">What I Know</p>
 
-        <div className="skills-skill">
-          <div className="skill-label">
-            <span>HTML</span>
-            <span className="percent">70%</span>
+        {[
+          { label: 'HTML', percent: '70%', className: 'html' },
+          { label: 'CSS', percent: '65%', className: 'css' },
+          { label: 'React', percent: '60%', className: 'react' },
+          { label: 'GitHub', percent: '50%', className: 'github' }
+        ].map((skill) => (
+          <div className="skills-skill" key={skill.label}>
+            <div className="skill-label">
+              <span>{skill.label}</span>
+              <span className="percent">{skill.percent}</span>
+            </div>
+            <div className="skills-bar">
+              <div className={`skills-progress progress ${skill.className}`}></div>
+            </div>
           </div>
-          <div className="skills-bar">
-            <div className="skills-progress progress html"></div>
-          </div>
-        </div>
-
-        <div className="skills-skill">
-          <div className="skill-label">
-            <span>CSS</span>
-            <span className="percent">65%</span>
-          </div>
-          <div className="skills-bar">
-            <div className="skills-progress progress css"></div>
-          </div>
-        </div>
-
-        <div className="skills-skill">
-          <div className="skill-label">
-            <span>React</span>
-            <span className="percent">60%</span>
-          </div>
-          <div className="skills-bar">
-            <div className="skills-progress progress react"></div>
-          </div>
-        </div>
-
-        <div className="skills-skill">
-          <div className="skill-label">
-            <span>GitHub</span>
-            <span className="percent">50%</span>
-          </div>
-          <div className="skills-bar">
-            <div className="skills-progress progress github"></div>
-          </div>
-        </div>
+        ))}
       </section>
 
       {/* Services Section */}
@@ -134,19 +115,14 @@ function App() {
         </div>
       </section>
 
+      {/* Footer */}
       <footer className="footer">
         <div className="footer-content">
           <p>© 2025 Bezawit. All rights reserved.</p>
           <div className="social-icons">
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-              <FaFacebookF />
-            </a>
-            <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-              <SiTiktok />
-            </a>
-            <a href="https://telegram.org" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
-              <FaTelegramPlane />
-            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><FaFacebookF /></a>
+            <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><FaTiktok /></a>
+            <a href="https://telegram.org" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><FaTelegramPlane /></a>
           </div>
         </div>
       </footer>
